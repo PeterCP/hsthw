@@ -1,0 +1,44 @@
+{
+	"server": {
+		"default": {
+			"listen": "8000 default_server",
+			"serverName": "default.com",
+			"accessLog": "/var/log/acces_log",
+			"root": "/var/www/",
+			"errorPage": {
+				"404": "/404.html",
+				"403": "/403.html"
+			},
+			"location": {
+				"^/private": {
+					"deny": "all"
+				},
+				"^/public": {
+					"root": "/home/mono/public"
+				},
+				"^/": {
+					"root": "/var/www/",
+					"index": "index.html index.htm"
+				}
+			}
+		},
+		"extra": {
+			"listen": 8000,
+			"serverName": "extra.com",
+			"accessLog": "/var/log/extra_acces_log",
+			"root": "/var/www/extra",
+			"errorPage": {
+				"404": "/404.html"
+			},
+			"location": {
+				"^/images": {
+					"root": "/var/images"
+				},
+				"^/": {
+					"root": "/var/www/extra",
+					"index": "index.html index.htm"
+				}
+			}
+		}
+	}
+}
